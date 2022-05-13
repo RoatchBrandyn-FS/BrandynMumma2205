@@ -7,4 +7,6 @@
     <string name="title_username">Username</string>
     <string name="title_password">Password</string>
     <string name="hint_password">Password</string>
+    <string name="btn_title_login">Login</string>
+    <string name="btn_title_new_room">Create New Room</string>
 </resources>

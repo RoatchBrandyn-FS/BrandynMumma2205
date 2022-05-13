@@ -38,8 +38,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="8dp">
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -51,10 +51,12 @@
             android:textColor="@color/black"/>
 
         <EditText
+            android:id="@+id/login_edit_room_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_room_code"
-            android:layout_margin="8dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -66,10 +68,12 @@
             android:textColor="@color/black"/>
 
         <EditText
+            android:id="@+id/login_edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_username"
-            android:layout_margin="8dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -81,9 +85,30 @@
             android:textColor="@color/black"/>
 
         <EditText
+            android:id="@+id/login_edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/login_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/btn_title_login"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/login_textview_new_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_title_new_room"
+            android:textColor="@color/lightBlue_700"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_margin="8dp"/>
 
     </LinearLayout>
