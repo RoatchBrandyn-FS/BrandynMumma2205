@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PetCheckAndroid</string>
+    <string name="app_title">Pet Check</string>
+    <string name="hint_room_code">Room Code</string>
+    <string name="title_room_code">Room Code</string>
+    <string name="hint_username">Username</string>
+    <string name="title_username">Username</string>
+    <string name="title_password">Password</string>
+    <string name="hint_password">Password</string>
 </resources>
