@@ -1,5 +1,6 @@
 package com.example.petcheckandroid.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.NewRoomActivity;
 import com.example.petcheckandroid.utilities.Alerts;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
@@ -70,6 +72,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
         else if (view.getId() == R.id.login_textview_new_room) {
             Log.i(TAG, "onClick: New Room TV Pressed");
+
+            Intent newRoomIntent = new Intent(getContext(), NewRoomActivity.class);
+            newRoomIntent.setAction(Intent.ACTION_RUN);
+            startActivity(newRoomIntent);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.petcheckandroid;
+package com.example.petcheckandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.fragments.LoginFragment;
 import com.example.petcheckandroid.utilities.Alerts;
 
