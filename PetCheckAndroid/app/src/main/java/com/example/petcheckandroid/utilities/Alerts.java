@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-public class Alert {
+public class Alerts {
 
     public static void loginError(Context context){
 
