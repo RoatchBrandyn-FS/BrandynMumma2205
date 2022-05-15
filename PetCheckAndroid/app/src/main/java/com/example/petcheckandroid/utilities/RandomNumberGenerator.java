@@ -15,7 +15,7 @@ public class RandomNumberGenerator {
         StringBuilder roomCode = new StringBuilder();
 
         for (int i = 0; i < 16; i++){
-            roomCode.append(randomNum.nextInt(9));
+            roomCode.append(randomNum.nextInt(10));
         }
 
         roomCode.insert(12, "-");
