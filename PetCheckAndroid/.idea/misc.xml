@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/rounded_corners_bottom.xml" value="0.201" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19678039550781246" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_new_admin.xml" value="0.18575286865234375" />
         <entry key="app/src/main/res/layout/fragment_new_room.xml" value="0.19322916666666667" />
       </map>
     </option>

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.NewRoomActivity;
-import com.example.petcheckandroid.utilities.Alerts;
+import com.example.petcheckandroid.utilities.AlertsUtil;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -66,7 +66,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             String passwordString = passwordET.getText().toString().trim();
 
             if(roomCodeString.isEmpty() || usernameString.isEmpty() || passwordString.isEmpty()){
-                Alerts.loginError(getContext());
+                AlertsUtil.loginError(getContext());
             }
 
         }

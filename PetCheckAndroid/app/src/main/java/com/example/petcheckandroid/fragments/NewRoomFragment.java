@@ -1,5 +1,6 @@
 package com.example.petcheckandroid.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +15,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.petcheckandroid.R;
-import com.example.petcheckandroid.utilities.Alerts;
-import com.example.petcheckandroid.utilities.RandomNumberGenerator;
+import com.example.petcheckandroid.activities.NewAdminActivity;
+import com.example.petcheckandroid.utilities.AlertsUtil;
+import com.example.petcheckandroid.utilities.IntentExtrasUtil;
+import com.example.petcheckandroid.utilities.RandomNumberGeneratorUtil;
 
 public class NewRoomFragment extends Fragment implements View.OnClickListener {
 
@@ -46,7 +49,7 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
 
         //set random room code
         // *** Need to redo this code later to check for room codes already in use
-        String roomCodeString = RandomNumberGenerator.randomRoomCodeGenerator();
+        String roomCodeString = RandomNumberGeneratorUtil.randomRoomCodeGenerator();
 
         TextView roomCodeTV = getActivity().findViewById(R.id.new_room_tv_room_code);
         roomCodeTV.setText(roomCodeString);
@@ -56,20 +59,32 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        //get edit text
+        //get edit text and textview
         EditText roomNameET = getActivity().findViewById(R.id.new_room_edit_room_name);
         EditText passwordET = getActivity().findViewById(R.id.new_room_edit_password);
         EditText confirmET = getActivity().findViewById(R.id.new_room_edit_confirm);
+        TextView roomCodeTV = getActivity().findViewById(R.id.new_room_tv_room_code);
 
         //get strings from edit text
         String roomNameString = roomNameET.getText().toString().trim();
         String passwordString = passwordET.getText().toString().trim();
         String confirmString = confirmET.getText().toString().trim();
+        String roomCodeString = roomCodeTV.getText().toString().trim();
 
         if (view.getId() == R.id.new_room_btn_continue){
             Log.i(TAG, "onClick: Continue Button Clicked");
             if (roomNameString.isEmpty() || passwordString.isEmpty() || confirmString.isEmpty()){
-                Alerts.newRoomError(getContext());
+                AlertsUtil.newRoomError(getContext());
+            }
+            else{
+                Intent newAdminIntent = new Intent(getContext(), NewAdminActivity.class);
+                newAdminIntent.setAction(Intent.ACTION_RUN);
+
+                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_CODE, roomCodeString);
+                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_NAME, roomNameString);
+                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_PASSWORD, passwordString);
+
+                startActivity(newAdminIntent);
             }
         }
 

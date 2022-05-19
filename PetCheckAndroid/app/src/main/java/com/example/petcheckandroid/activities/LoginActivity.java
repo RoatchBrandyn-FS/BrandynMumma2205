@@ -2,17 +2,11 @@ package com.example.petcheckandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.fragments.LoginFragment;
-import com.example.petcheckandroid.utilities.Alerts;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity.TAG";
 

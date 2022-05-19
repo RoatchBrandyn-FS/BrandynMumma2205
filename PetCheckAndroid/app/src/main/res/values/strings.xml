@@ -16,4 +16,11 @@
     <string name="title_confirm_password">Confirm Password</string>
     <string name="hint_confirm">Confirm</string>
     <string name="btn_title_continue">Continue</string>
+    <string name="create_room_admin">Create Room Admin</string>
+    <string name="title_first_name">First Name</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="title_last_name">Last Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="btn_create">Create</string>
 </resources>

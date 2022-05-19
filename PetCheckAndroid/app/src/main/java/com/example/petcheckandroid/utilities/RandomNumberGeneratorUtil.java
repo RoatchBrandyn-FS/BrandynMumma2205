@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGeneratorUtil {
 
     public static String randomRoomCodeGenerator(){
 
