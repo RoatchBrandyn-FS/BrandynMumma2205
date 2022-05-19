@@ -77,14 +77,22 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
                 AlertsUtil.newRoomError(getContext());
             }
             else{
-                Intent newAdminIntent = new Intent(getContext(), NewAdminActivity.class);
-                newAdminIntent.setAction(Intent.ACTION_RUN);
 
-                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_CODE, roomCodeString);
-                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_NAME, roomNameString);
-                newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_PASSWORD, passwordString);
+                if(!passwordString.equals(confirmString)){
+                    AlertsUtil.passwordMatchError(getContext());
+                }
+                else {
+                    Intent newAdminIntent = new Intent(getContext(), NewAdminActivity.class);
+                    newAdminIntent.setAction(Intent.ACTION_RUN);
 
-                startActivity(newAdminIntent);
+                    newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_CODE, roomCodeString);
+                    newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_NAME, roomNameString);
+                    newAdminIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_PASSWORD, passwordString);
+
+                    startActivity(newAdminIntent);
+                }
+
+
             }
         }
 

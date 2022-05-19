@@ -57,4 +57,21 @@ public class AlertsUtil {
 
     }
 
+    public static void passwordMatchError(Context context){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Password");
+        builder.setMessage("Password needs to match with Confirm Password in order to create New Room");
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.show();
+
+    }
+
 }
