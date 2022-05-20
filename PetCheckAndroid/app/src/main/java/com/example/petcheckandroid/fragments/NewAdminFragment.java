@@ -2,6 +2,7 @@ package com.example.petcheckandroid.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,17 @@ import androidx.fragment.app.Fragment;
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.LoginActivity;
 import com.example.petcheckandroid.utilities.AlertsUtil;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewAdminFragment extends Fragment implements View.OnClickListener {
+
+    private final String TAG = "NewAdminFrag.TAG";
 
     public static NewAdminFragment newInstance() {
 
@@ -62,6 +72,9 @@ public class NewAdminFragment extends Fragment implements View.OnClickListener {
                 AlertsUtil.newUserError(getContext());
             }
             else {
+
+                //addNewRoom(roomNameString, roomCodeString, passwordString);
+
                 Intent loginIntent = new Intent(getContext(), LoginActivity.class);
                 loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 loginIntent.setAction(Intent.ACTION_MAIN);
@@ -71,4 +84,28 @@ public class NewAdminFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
+    private void addNewRoom(String _name, String _roomCode, String _password){
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> room = new HashMap<>();
+        room.put("name", _name);
+        room.put("room_code", _roomCode);
+        room.put("password", _password);
+
+        db.collection("rooms").add(room).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.i(TAG, "onSuccess: Doc added with id = " + documentReference.getId());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.i(TAG, "onFailure: " + e);
+            }
+        });
+
+    }
+
 }

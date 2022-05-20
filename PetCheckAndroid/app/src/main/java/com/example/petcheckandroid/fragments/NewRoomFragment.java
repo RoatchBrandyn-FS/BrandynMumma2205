@@ -19,6 +19,13 @@ import com.example.petcheckandroid.activities.NewAdminActivity;
 import com.example.petcheckandroid.utilities.AlertsUtil;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 import com.example.petcheckandroid.utilities.RandomNumberGeneratorUtil;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewRoomFragment extends Fragment implements View.OnClickListener {
 
@@ -82,6 +89,9 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
                     AlertsUtil.passwordMatchError(getContext());
                 }
                 else {
+
+
+
                     Intent newAdminIntent = new Intent(getContext(), NewAdminActivity.class);
                     newAdminIntent.setAction(Intent.ACTION_RUN);
 
@@ -97,4 +107,6 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
+
 }

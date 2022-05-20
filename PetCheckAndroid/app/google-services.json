@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "961456706153",
+    "project_id": "petcheckandroid-fe522",
+    "storage_bucket": "petcheckandroid-fe522.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961456706153:android:0b2f3b5a28fd066516c8f8",
+        "android_client_info": {
+          "package_name": "com.example.petcheckandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961456706153-5mg2cdmkpg2occmk3ranhpa5ldcc5ejr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3g9Y_1zlLZf2yn-Uv2UqIMeyr9DyuMnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961456706153-5mg2cdmkpg2occmk3ranhpa5ldcc5ejr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
