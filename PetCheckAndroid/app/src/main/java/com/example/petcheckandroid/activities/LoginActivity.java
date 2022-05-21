@@ -45,6 +45,16 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
 
     }
 
+    @Override
+    public ArrayList<String> getRoomCodes() {
+        return roomCodes;
+    }
+
+    @Override
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
     private void fetchRooms(){
 
         Log.i(TAG, "fetchRooms: Should be loading room data");
@@ -99,8 +109,5 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
 
     }
 
-    @Override
-    public ArrayList<String> getRoomCodes() {
-        return roomCodes;
-    }
+
 }

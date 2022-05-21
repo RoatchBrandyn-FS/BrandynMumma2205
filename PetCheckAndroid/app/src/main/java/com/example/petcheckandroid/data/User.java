@@ -1,6 +1,8 @@
 package com.example.petcheckandroid.data;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private final String firstName;
     private final String lastName;

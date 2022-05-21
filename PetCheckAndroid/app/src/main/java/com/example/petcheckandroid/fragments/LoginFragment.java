@@ -16,11 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.MainPostsActivity;
 import com.example.petcheckandroid.activities.NewRoomActivity;
+import com.example.petcheckandroid.data.Room;
+import com.example.petcheckandroid.data.User;
 import com.example.petcheckandroid.utilities.AlertsUtil;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -39,6 +43,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     public interface LoginFragmentListener{
         ArrayList<String> getRoomCodes();
+        ArrayList<Room> getRooms();
     }
 
     @Override
@@ -86,6 +91,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             if(roomCodeString.isEmpty() || usernameString.isEmpty() || passwordString.isEmpty()){
                 AlertsUtil.loginError(getContext());
             }
+            else{
+                checkLoginInfo(roomCodeString, usernameString, passwordString);
+            }
 
         }
         else if (view.getId() == R.id.login_textview_new_room) {
@@ -99,6 +107,62 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             newRoomIntent.setAction(Intent.ACTION_RUN);
             startActivity(newRoomIntent);
         }
+    }
+
+    private void checkLoginInfo(String _roomCode, String _username, String _password){
+        //all needed checks
+        ArrayList<Room> rooms = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
+        Room confirmedRoom = null;
+        User currentUser = null;
+
+        //needs password edit text to reset if wrong
+        EditText passwordET = getActivity().findViewById(R.id.login_edit_password);
+
+        rooms = loginFragmentListener.getRooms();
+        Log.i(TAG, "checkLoginInfo: First room code = " + rooms.get(0).getRoomCode());
+
+        for (Room r : rooms ) {
+            if (Objects.equals(r.getRoomCode(), _roomCode)){
+                confirmedRoom = r;
+            }
+        }
+
+        if(confirmedRoom == null){
+            AlertsUtil.roomCodeMatchError(getContext());
+            passwordET.setText("");
+        }
+        else{
+            users = confirmedRoom.getUsers();
+
+            for(User u : users){
+                if (Objects.equals(u.getUsername(), _username)){
+                    currentUser = u;
+                }
+            }
+
+            if (currentUser == null){
+                AlertsUtil.userNotInRoomError(getContext());
+                passwordET.setText("");
+            }
+            else{
+                if(!confirmedRoom.getPassword().equals(_password)){
+                    AlertsUtil.passwordLoginError(getContext());
+                    passwordET.setText("");
+                }
+                else{
+                    //if it gets here, should go to main posts page
+                    Intent mainPostIntent = new Intent(getContext(), MainPostsActivity.class);
+                    mainPostIntent.setAction(Intent.ACTION_RUN);
+                    mainPostIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, confirmedRoom);
+                    mainPostIntent.putExtra(IntentExtrasUtil.EXTRA_CURRENT_USER, currentUser);
+
+                    startActivity(mainPostIntent);
+
+                }
+            }
+        }
+
     }
 
 }

@@ -50,6 +50,17 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.MainPostsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+
+            </intent-filter>
+        </activity>
+
 
     </application>
 

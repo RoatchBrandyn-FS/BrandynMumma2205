@@ -99,7 +99,7 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
             else{
 
                 if(!passwordString.equals(confirmString)){
-                    AlertsUtil.passwordMatchError(getContext());
+                    AlertsUtil.passwordNewRoomError(getContext());
                 }
                 else {
 
