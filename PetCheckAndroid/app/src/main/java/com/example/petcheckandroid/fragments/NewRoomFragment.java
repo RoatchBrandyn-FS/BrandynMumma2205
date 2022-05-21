@@ -1,5 +1,6 @@
 package com.example.petcheckandroid.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,7 @@ import java.util.Map;
 public class NewRoomFragment extends Fragment implements View.OnClickListener {
 
     private final String TAG = "NewRoomFragment.TAG";
+    public NewRoomFragmentListener newRoomFragmentListener;
 
     public static NewRoomFragment newInstance() {
 
@@ -38,6 +40,18 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
         NewRoomFragment fragment = new NewRoomFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public interface NewRoomFragmentListener {
+        String getRoomCode();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof NewRoomFragmentListener){
+            newRoomFragmentListener = (NewRoomFragmentListener) context;
+        }
     }
 
     @Nullable
@@ -55,8 +69,7 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
         continueBtn.setOnClickListener(this);
 
         //set random room code
-        // *** Need to redo this code later to check for room codes already in use
-        String roomCodeString = RandomNumberGeneratorUtil.randomRoomCodeGenerator();
+        String roomCodeString = newRoomFragmentListener.getRoomCode();
 
         TextView roomCodeTV = getActivity().findViewById(R.id.new_room_tv_room_code);
         roomCodeTV.setText(roomCodeString);
@@ -89,8 +102,6 @@ public class NewRoomFragment extends Fragment implements View.OnClickListener {
                     AlertsUtil.passwordMatchError(getContext());
                 }
                 else {
-
-
 
                     Intent newAdminIntent = new Intent(getContext(), NewAdminActivity.class);
                     newAdminIntent.setAction(Intent.ACTION_RUN);

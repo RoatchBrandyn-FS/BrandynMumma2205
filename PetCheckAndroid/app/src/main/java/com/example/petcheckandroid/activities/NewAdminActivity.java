@@ -33,7 +33,7 @@ public class NewAdminActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .setReorderingAllowed(true)
-                .replace(R.id.fragment_container, NewAdminFragment.newInstance())
+                .replace(R.id.fragment_container, NewAdminFragment.newInstance(roomName, roomCode, roomPassword))
                 .commit();
 
     }
