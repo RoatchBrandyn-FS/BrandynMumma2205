@@ -27,4 +27,5 @@
     <string name="menu_settings">settings</string>
     <string name="menu_add_pets">add pets</string>
     <string name="fab_add">add</string>
+    <string name="empty_pets">No Pets Added</string>
 </resources>

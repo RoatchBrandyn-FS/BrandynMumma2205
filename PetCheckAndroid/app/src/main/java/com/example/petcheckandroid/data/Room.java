@@ -9,6 +9,7 @@ public class Room implements Serializable {
     private final String roomCode;
     private final String password;
     private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<Pet> pets = new ArrayList<>();
 
     public Room(String _name, String _roomCode, String _password){
         name = _name;
@@ -34,5 +35,13 @@ public class Room implements Serializable {
 
     public void updateUsers(ArrayList<User> updatedUsers){
         users = updatedUsers;
+    }
+
+    public void updatePets(ArrayList<Pet> updatedPets) {
+        pets = updatedPets;
+    }
+
+    public ArrayList<Pet> getPets() {
+        return pets;
     }
 }

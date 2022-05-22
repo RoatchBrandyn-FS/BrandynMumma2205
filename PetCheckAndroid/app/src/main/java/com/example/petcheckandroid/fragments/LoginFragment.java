@@ -121,6 +121,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         rooms = loginFragmentListener.getRooms();
         Log.i(TAG, "checkLoginInfo: First room code = " + rooms.get(0).getRoomCode());
+        //Log.i(TAG, "checkLoginInfo: First Pet = " + rooms.get(0).getPets().get(0).getName());
 
         for (Room r : rooms ) {
             if (Objects.equals(r.getRoomCode(), _roomCode)){

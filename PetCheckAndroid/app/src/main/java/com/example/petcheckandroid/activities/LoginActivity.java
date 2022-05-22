@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
 import com.example.petcheckandroid.fragments.LoginFragment;
@@ -94,7 +95,33 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                                 }
 
                                 newRoom.updateUsers(users);
-                                rooms.add(newRoom);
+
+                                db.collection(FirebaseUtil.COLLECTION_ROOMS + "/" + doc.getId()
+                                        + "/" + FirebaseUtil.COLLECTION_PETS).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                                        ArrayList<Pet> pets = new ArrayList<>();
+
+                                        for (QueryDocumentSnapshot doc : task.getResult()){
+
+                                            String petName = doc.getString(FirebaseUtil.PETS_FIELD_NAME);
+                                            String petType = doc.getString(FirebaseUtil.PETS_FIELD_TYPE);
+                                            String petDescription = doc.getString(FirebaseUtil.PETS_FIELD_DESCRIPTION);
+                                            String specialInstructions = doc.getString(FirebaseUtil.PETS_FIELD_SPECIAL_INSTRUCTIONS);
+                                            ArrayList<String> activityTypes = (ArrayList<String>) doc.get(FirebaseUtil.PETS_FIELD_ACTIVITY_TYPES);
+                                            ArrayList<String> activityTimes = (ArrayList<String>) doc.get(FirebaseUtil.PETS_FIELD_ACTIVITY_TIMES);
+
+                                            Pet newPet = new Pet(petName, petType, petDescription, specialInstructions, activityTypes, activityTimes);
+                                            pets.add(newPet);
+                                        }
+
+                                        newRoom.updatePets(pets);
+                                        rooms.add(newRoom);
+
+                                    }
+                                });
+
                             }
 
                         });
