@@ -127,4 +127,21 @@ public class AlertsUtil {
 
     }
 
+    public static void noPetsError(Context context){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("No Pets Yet!");
+        builder.setMessage("No pets added yet! Go to the Paw button, then add a pet there to start posting activities!");
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.show();
+
+    }
+
 }

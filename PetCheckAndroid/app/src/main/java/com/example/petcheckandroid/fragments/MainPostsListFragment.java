@@ -1,5 +1,6 @@
 package com.example.petcheckandroid.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.service.controls.actions.FloatAction;
 import android.util.Log;
@@ -15,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.PetsListActivity;
+import com.example.petcheckandroid.utilities.AlertsUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainPostsListFragment extends ListFragment implements View.OnClickListener {
@@ -63,6 +66,12 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
         }
         else if (item.getTitle().equals("add pets")){
             Log.i(TAG, "onOptionsItemSelected: add pets pressed");
+
+            Intent petsListIntent = new Intent(getContext(), PetsListActivity.class);
+            // *** MAKE SURE AND ADD ROOM HERE TO CHANGE TITLE AND ADD PETS ***
+            petsListIntent.setAction(Intent.ACTION_RUN);
+
+            startActivity(petsListIntent);
         }
         
         return super.onOptionsItemSelected(item);
@@ -72,6 +81,8 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
     public void onClick(View view) {
         if (view.getId() == R.id.main_post_fab){
             Log.i(TAG, "onClick: fab pressed");
+
+            AlertsUtil.noPetsError(getContext()); //*** MAKE SURE AND UPDATE THIS WHEN ABLE TO ADD PETS ***
         }
     }
 }
