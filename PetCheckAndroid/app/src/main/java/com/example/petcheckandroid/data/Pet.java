@@ -1,8 +1,9 @@
 package com.example.petcheckandroid.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pet {
+public class Pet implements Serializable {
 
     private final String name;
     private final String type;

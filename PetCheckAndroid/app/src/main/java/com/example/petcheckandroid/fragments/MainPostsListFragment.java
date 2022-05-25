@@ -1,5 +1,6 @@
 package com.example.petcheckandroid.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.service.controls.actions.FloatAction;
@@ -17,12 +18,18 @@ import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.PetsListActivity;
+import com.example.petcheckandroid.data.Pet;
+import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.utilities.AlertsUtil;
+import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainPostsListFragment extends ListFragment implements View.OnClickListener {
 
     private final String TAG = "MainPostsListFrag.TAG";
+    private MainPostsListFragListener mainPostsListFragListener;
 
     public static MainPostsListFragment newInstance() {
 
@@ -31,6 +38,19 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
         MainPostsListFragment fragment = new MainPostsListFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public interface MainPostsListFragListener {
+        Room getRoom();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if (context instanceof MainPostsListFragListener){
+            mainPostsListFragListener = (MainPostsListFragListener) context;
+        }
     }
 
     @Nullable
@@ -43,8 +63,6 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
-
-        //setup list here with args bundle
         
         //set floating buttons, menu will be in separate area
         FloatingActionButton fab = getActivity().findViewById(R.id.main_post_fab);
@@ -69,7 +87,10 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
 
             Intent petsListIntent = new Intent(getContext(), PetsListActivity.class);
             // *** MAKE SURE AND ADD ROOM HERE TO CHANGE TITLE AND ADD PETS ***
+
+
             petsListIntent.setAction(Intent.ACTION_RUN);
+            petsListIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, mainPostsListFragListener.getRoom());
 
             startActivity(petsListIntent);
         }

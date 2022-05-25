@@ -8,5 +8,6 @@ public class IntentExtrasUtil {
     public static String EXTRA_ROOM_CODES = "EXTRA_ROOM_CODES";
     public static String EXTRA_CONFIRMED_ROOM = "EXTRA_CONFIRMED_ROOM";
     public static String EXTRA_CURRENT_USER = "EXTRA_CONFIRMED_USER";
+    public static String EXTRA_PET_LIST = "EXTRA_PET_LIST";
 
 }
