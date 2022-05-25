@@ -72,8 +72,9 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                         String _roomName = doc.getString(FirebaseUtil.ROOMS_FIELD_ROOM_NAME);
                         String _roomCode = doc.getString(FirebaseUtil.ROOMS_FIELD_ROOM_CODE);
                         String _password = doc.getString(FirebaseUtil.ROOMS_FIELD_PASSWORD);
+                        String _docId = doc.getId();
 
-                        Room newRoom = new Room(_roomName, _roomCode, _password);
+                        Room newRoom = new Room(_roomName, _roomCode, _password, _docId);
                         roomCodes.add(_roomCode);
 
                         db.collection(FirebaseUtil.COLLECTION_ROOMS + "/" + doc.getId()
@@ -95,32 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                                 }
 
                                 newRoom.updateUsers(users);
-
-                                db.collection(FirebaseUtil.COLLECTION_ROOMS + "/" + doc.getId()
-                                        + "/" + FirebaseUtil.COLLECTION_PETS).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                                        ArrayList<Pet> pets = new ArrayList<>();
-
-                                        for (QueryDocumentSnapshot doc : task.getResult()){
-
-                                            String petName = doc.getString(FirebaseUtil.PETS_FIELD_NAME);
-                                            String petType = doc.getString(FirebaseUtil.PETS_FIELD_TYPE);
-                                            String petDescription = doc.getString(FirebaseUtil.PETS_FIELD_DESCRIPTION);
-                                            String specialInstructions = doc.getString(FirebaseUtil.PETS_FIELD_SPECIAL_INSTRUCTIONS);
-                                            ArrayList<String> activityTypes = (ArrayList<String>) doc.get(FirebaseUtil.PETS_FIELD_ACTIVITY_TYPES);
-                                            ArrayList<String> activityTimes = (ArrayList<String>) doc.get(FirebaseUtil.PETS_FIELD_ACTIVITY_TIMES);
-
-                                            Pet newPet = new Pet(petName, petType, petDescription, specialInstructions, activityTypes, activityTimes);
-                                            pets.add(newPet);
-                                        }
-
-                                        newRoom.updatePets(pets);
-                                        rooms.add(newRoom);
-
-                                    }
-                                });
+                                rooms.add(newRoom);
 
                             }
 

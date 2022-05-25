@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
-import com.example.petcheckandroid.fragments.LoginFragment;
 import com.example.petcheckandroid.fragments.MainPostsListFragment;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 
@@ -40,5 +39,10 @@ public class MainPostsActivity extends AppCompatActivity {
                 .setReorderingAllowed(true)
                 .replace(R.id.fragment_container, MainPostsListFragment.newInstance())
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

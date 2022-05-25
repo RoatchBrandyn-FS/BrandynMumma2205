@@ -8,13 +8,15 @@ public class Room implements Serializable {
     private final String name;
     private final String roomCode;
     private final String password;
+    private final String docId;
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Pet> pets = new ArrayList<>();
 
-    public Room(String _name, String _roomCode, String _password){
+    public Room(String _name, String _roomCode, String _password, String _docId){
         name = _name;
         roomCode = _roomCode;
         password = _password;
+        docId = _docId;
     }
 
     public String getName() {
@@ -27,6 +29,10 @@ public class Room implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getDocId() {
+        return docId;
     }
 
     public ArrayList<User> getUsers() {

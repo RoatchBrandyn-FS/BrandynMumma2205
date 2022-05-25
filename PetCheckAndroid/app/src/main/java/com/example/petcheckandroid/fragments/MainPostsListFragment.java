@@ -77,6 +77,7 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.main_post_fab){
