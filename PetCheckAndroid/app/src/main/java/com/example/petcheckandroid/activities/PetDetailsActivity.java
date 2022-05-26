@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Room;
+import com.example.petcheckandroid.fragments.PetDetailsFragment;
+import com.example.petcheckandroid.fragments.PetsListFragment;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 
-public class PetDetailsActivity extends AppCompatActivity {
+public class PetDetailsActivity extends AppCompatActivity implements PetDetailsFragment.PetDeatilsFragmentListener {
 
     private final String TAG = "PetDetailsActivity.TAG";
     Pet pet;
@@ -31,5 +33,16 @@ public class PetDetailsActivity extends AppCompatActivity {
             actionBar.setTitle(pet.getName() + " - Details");
         }
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.fragment_container, PetDetailsFragment.newInstance())
+                .commit();
+
+    }
+
+    @Override
+    public Pet getPetDetails() {
+        return pet;
     }
 }
