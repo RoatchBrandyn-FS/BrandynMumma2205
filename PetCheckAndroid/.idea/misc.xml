@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/rounded_corners_all.xml" value="0.202" />
         <entry key="app/src/main/res/drawable/rounded_corners_bottom.xml" value="0.201" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19678039550781246" />
+        <entry key="app/src/main/res/layout/base_pet_adapter.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/fragment_list_pets.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/fragment_list_posts.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22768096923828124" />

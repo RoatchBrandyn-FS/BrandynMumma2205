@@ -12,11 +12,13 @@ import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
+import com.example.petcheckandroid.fragments.MainPostsListFragment;
+import com.example.petcheckandroid.fragments.PetsListFragment;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 
 import java.util.ArrayList;
 
-public class PetsListActivity extends AppCompatActivity {
+public class PetsListActivity extends AppCompatActivity implements PetsListFragment.PetsListFragmentListener {
 
     private final String TAG = "PetsListActivity.TAG";
 
@@ -27,18 +29,29 @@ public class PetsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            // *** Change this later to have room name and current title ***
-            actionBar.setTitle("My Pets");
-        }
-
         //set room and user data
         Intent currentIntent = getIntent();
         room = (Room) currentIntent.getSerializableExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM);
 
         Log.i(TAG, "onCreate: First Pet = " + room.getPets().get(0).getName());
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            // *** Change this later to have room name and current title ***
+            actionBar.setTitle(room.getName() + " - My Pets");
+        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.fragment_container, PetsListFragment.newInstance())
+                .commit();
+
+
     }
 
+    @Override
+    public ArrayList<Pet> getPetsList() {
+        return room.getPets();
+    }
 }
