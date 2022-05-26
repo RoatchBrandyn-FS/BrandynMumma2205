@@ -1,11 +1,14 @@
 package com.example.petcheckandroid.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.PetDetailsActivity;
 import com.example.petcheckandroid.adapters.PetAdapter;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
@@ -62,5 +66,19 @@ public class PetsListFragment extends ListFragment {
         PetAdapter petAdapter = new PetAdapter(getContext(), pets);
 
         setListAdapter(petAdapter);
+    }
+
+    @Override
+    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        ArrayList<Pet> pets = petsListFragmentListener.getPetsList();
+        Log.i(TAG, "onListItemClick: Pet Selected = " + pets.get(position).getName());
+
+        Intent petDetailsIntent = new Intent(getContext(), PetDetailsActivity.class);
+        petDetailsIntent.setAction(Intent.ACTION_RUN);
+        petDetailsIntent.putExtra(IntentExtrasUtil.EXTRA_PET_DETAILS, pets.get(position));
+
+        startActivity(petDetailsIntent);
     }
 }
