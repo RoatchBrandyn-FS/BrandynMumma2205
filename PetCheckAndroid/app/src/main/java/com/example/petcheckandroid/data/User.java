@@ -7,12 +7,14 @@ public class User implements Serializable {
     private final String firstName;
     private final String lastName;
     private final String username;
+    private final String docId;
     private final boolean isAdmin;
 
-    public User(String _firstName, String _lastName, String _username, boolean _isAdmin){
+    public User(String _firstName, String _lastName, String _username, String _docId, boolean _isAdmin){
         firstName = _firstName;
         lastName = _lastName;
         username = _username;
+        docId = _docId;
         isAdmin = _isAdmin;
     }
 
@@ -30,6 +32,10 @@ public class User implements Serializable {
 
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getDocId() {
+        return docId;
     }
 
     public boolean isAdmin() {

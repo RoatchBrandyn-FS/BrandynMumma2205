@@ -13,7 +13,7 @@ import com.example.petcheckandroid.fragments.PetDetailsFragment;
 import com.example.petcheckandroid.fragments.PetsListFragment;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 
-public class PetDetailsActivity extends AppCompatActivity implements PetDetailsFragment.PetDeatilsFragmentListener {
+public class PetDetailsActivity extends AppCompatActivity implements PetDetailsFragment.PetDetailsFragmentListener {
 
     private final String TAG = "PetDetailsActivity.TAG";
     Pet pet;

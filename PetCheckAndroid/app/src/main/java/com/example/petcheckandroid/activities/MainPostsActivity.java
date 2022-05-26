@@ -85,7 +85,7 @@ public class MainPostsActivity extends AppCompatActivity implements MainPostsLis
                     //Log.i(TAG, "onComplete: First Type List = " + activityTypes.get(0));
                     ArrayList<String> _activityTimes =(ArrayList<String>)doc.get(FirebaseUtil.PETS_FIELD_ACTIVITY_TIMES);
 
-                    Pet newPet = new Pet(_name, _type, _description, _specialInstructions, _activityTypes, _activityTimes);
+                    Pet newPet = new Pet(_name, _type, _description, _specialInstructions, doc.getId(),  _activityTypes, _activityTimes);
                     pets.add(newPet);
                 }
 

@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                                     String username = doc.getString(FirebaseUtil.USERS_FIELD_USERNAME);
                                     boolean isAdmin = doc.getBoolean(FirebaseUtil.USERS_FIELD_ADMIN);
 
-                                    User newUser = new User(firstName, lastName, username, isAdmin);
+                                    User newUser = new User(firstName, lastName, username, doc.getId(), isAdmin);
                                     users.add(newUser);
                                 }
 

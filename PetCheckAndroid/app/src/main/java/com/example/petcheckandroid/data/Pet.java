@@ -9,16 +9,18 @@ public class Pet implements Serializable {
     private final String type;
     private final String description;
     private final String specialInstructions;
+    private final String docId;
     private ArrayList<String> activityTypes = new ArrayList<>();
-    private ArrayList<String> activityTimes =new ArrayList<>();
+    private ArrayList<String> activityTimes = new ArrayList<>();
 
-    public Pet(String _name, String _type, String _description, String _specialInstructions,
+    public Pet(String _name, String _type, String _description, String _specialInstructions, String _docId,
                ArrayList<String> _activityTypes, ArrayList<String> _activityTimes){
 
         name = _name;
         type = _type;
         description = _description;
         specialInstructions = _specialInstructions;
+        docId = _docId;
         activityTypes = _activityTypes;
         activityTimes = _activityTimes;
 
@@ -38,6 +40,10 @@ public class Pet implements Serializable {
 
     public String getSpecialInstructions() {
         return specialInstructions;
+    }
+
+    public String getDocId() {
+        return docId;
     }
 
     public ArrayList<String> getActivityTypes() {
