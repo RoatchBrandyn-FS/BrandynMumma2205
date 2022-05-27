@@ -19,7 +19,10 @@ import androidx.fragment.app.ListFragment;
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.NewPostActivity;
 import com.example.petcheckandroid.activities.PetsListActivity;
+import com.example.petcheckandroid.adapters.PetAdapter;
+import com.example.petcheckandroid.adapters.PostAdapter;
 import com.example.petcheckandroid.data.Pet;
+import com.example.petcheckandroid.data.Post;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
 import com.example.petcheckandroid.utilities.AlertsUtil;
@@ -45,6 +48,7 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
     public interface MainPostsListFragListener {
         Room getRoom();
         User getCurrentUser();
+        ArrayList<Post> getPostsList();
     }
 
     @Override
@@ -70,6 +74,9 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
         //set floating buttons, menu will be in separate area
         FloatingActionButton fab = getActivity().findViewById(R.id.main_post_fab);
         fab.setOnClickListener(this);
+
+        //set list
+        setList();
     }
 
     @Override
@@ -120,7 +127,17 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
 
                 startActivity(newPostIntent);
             }
-             //*** MAKE SURE AND UPDATE THIS WHEN ABLE TO ADD PETS ***
         }
+    }
+
+
+
+    private void setList(){
+
+        ArrayList<Post> posts = mainPostsListFragListener.getPostsList();
+        PostAdapter postAdapter = new PostAdapter(getContext(), posts);
+
+        setListAdapter(postAdapter);
+
     }
 }

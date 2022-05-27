@@ -6,9 +6,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.202" />
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/rounded_corners_all.xml" value="0.202" />
+        <entry key="app/src/main/res/drawable/rounded_corners_all_white.xml" value="0.185" />
         <entry key="app/src/main/res/drawable/rounded_corners_bottom.xml" value="0.201" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19678039550781246" />
         <entry key="app/src/main/res/layout/base_pet_adapter.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/base_post_adapter.xml" value="0.3272374471028646" />
         <entry key="app/src/main/res/layout/fragment_add_pet.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_list_pets.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/fragment_list_posts.xml" value="0.165625" />

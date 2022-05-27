@@ -20,6 +20,7 @@ public class FirebaseUtil {
     public static final String COLLECTION_ROOMS = "rooms";
     public static final String COLLECTION_USERS = "users";
     public static final String COLLECTION_PETS = "pets";
+    public static final String COLLECTION_POSTS = "posts";
 
     //rooms collections field keys
     public static final String ROOMS_FIELD_ROOM_NAME = "name";
@@ -39,5 +40,12 @@ public class FirebaseUtil {
     public static String PETS_FIELD_TYPE = "type";
     public static String PETS_FIELD_ACTIVITY_TYPES = "activity_types";
     public static String PETS_FIELD_ACTIVITY_TIMES = "activity_times";
+
+    //posts collection fields keys
+    public static String POSTS_FIELD_PET_NAME = "pet_name";
+    public static String POSTS_FIELD_PET_TYPE = "pet_type";
+    public static String POSTS_FIELD_POST = "post";
+    public static String POSTS_FIELD_TIME_STAMP = "time_stamp";
+    public static String POSTS_FIELD_USERNAME = "username";
 
 }

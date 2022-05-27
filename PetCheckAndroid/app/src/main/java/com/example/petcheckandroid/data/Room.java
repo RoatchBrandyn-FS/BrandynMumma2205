@@ -11,6 +11,7 @@ public class Room implements Serializable {
     private final String docId;
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Pet> pets = new ArrayList<>();
+    private ArrayList<Post> posts = new ArrayList<>();
 
     public Room(String _name, String _roomCode, String _password, String _docId){
         name = _name;
@@ -45,6 +46,14 @@ public class Room implements Serializable {
 
     public void updatePets(ArrayList<Pet> updatedPets) {
         pets = updatedPets;
+    }
+
+    public void updatePosts(ArrayList<Post> updatedPosts) {
+        posts = updatedPosts;
+    }
+
+    public ArrayList<Post> getPosts() {
+        return posts;
     }
 
     public ArrayList<Pet> getPets() {
