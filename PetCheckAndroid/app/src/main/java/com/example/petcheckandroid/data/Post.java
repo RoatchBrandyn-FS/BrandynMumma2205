@@ -1,6 +1,8 @@
 package com.example.petcheckandroid.data;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Post implements Serializable {
 
@@ -27,10 +29,11 @@ public class Post implements Serializable {
     }
 
     public String getTitle(){
-        return username + "&" + petName;
+        return username + " & " + petName;
     }
 
     public String getImageType(){
         return petType;
     }
+
 }

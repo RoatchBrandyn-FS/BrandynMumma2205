@@ -152,9 +152,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     passwordET.setText("");
                 }
                 else{
+
+
+
                     //if it gets here, should go to main posts page
                     Intent mainPostIntent = new Intent(getContext(), MainPostsActivity.class);
                     mainPostIntent.setAction(Intent.ACTION_RUN);
+                    mainPostIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     mainPostIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, confirmedRoom);
                     mainPostIntent.putExtra(IntentExtrasUtil.EXTRA_CURRENT_USER, currentUser);
 

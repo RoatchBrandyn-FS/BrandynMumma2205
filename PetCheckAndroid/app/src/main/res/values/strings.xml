@@ -67,5 +67,7 @@
     <string name="title_my_pets">My Pets</string>
     <string name="title_activity_completed">Activity Completed:</string>
     <string name="title_btn_post">Post</string>
+    <string name="title_menu_logout">Logout</string>
+    <string name="title_menu_add_user">Add User</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.petcheckandroid.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,11 +21,20 @@ import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
+import com.example.petcheckandroid.utilities.DateUtil;
+import com.example.petcheckandroid.utilities.FirebaseUtil;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewPostFragment extends Fragment implements View.OnClickListener {
 
+    private final String TAG = "NewPostFragment.TAG";
     private NewPostFragListener newPostFragListener;
 
     public static NewPostFragment newInstance() {
@@ -59,7 +70,7 @@ public class NewPostFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         Button postBtn = getActivity().findViewById(R.id.new_post_btn_post);
-
+        postBtn.setOnClickListener(this);
 
         setInitialSpinners();
 
@@ -70,12 +81,47 @@ public class NewPostFragment extends Fragment implements View.OnClickListener {
 
         if(view.getId() == R.id.new_post_btn_post){
             //Log.i(TAG, "onClick: ");
-
-            //get user and room
+            //get user, room and firebase
             Room room = newPostFragListener.getRoom();
             User currentUser = newPostFragListener.getUser();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+            //get spinners
+            Spinner petSpinner = getActivity().findViewById(R.id.new_post_pet_spinner);
+            Spinner activitySpinner = getActivity().findViewById(R.id.new_post_activities_spinner);
 
+            ///get chosen pet and activity
+            Pet petChosen = room.getPets().get(petSpinner.getSelectedItemPosition());
+            String activityChosen = activitySpinner.getSelectedItem().toString();
+            Log.i(TAG, "onClick: Chosen Pet = " + petChosen.getName());
+            Log.i(TAG, "onClick: Chosen Activity = " + activityChosen);
+
+            //get strings for hash
+            String petName = petChosen.getName();
+            String petType = petChosen.getType();
+            String post = currentUser.getFullName() + " " + activityChosen + " " + petChosen.getName() + " ";
+            String timeStamp = DateUtil.setDateTime(new Date());
+            String username = currentUser.getUsername();
+
+            //set hash
+            Map<String, Object> newPost = new HashMap<>();
+            newPost.put(FirebaseUtil.POSTS_FIELD_PET_NAME, petName);
+            newPost.put(FirebaseUtil.POSTS_FIELD_PET_TYPE, petType);
+            newPost.put(FirebaseUtil.POSTS_FIELD_POST, post);
+            newPost.put(FirebaseUtil.POSTS_FIELD_TIME_STAMP, timeStamp);
+            newPost.put(FirebaseUtil.POSTS_FIELD_USERNAME, username);
+
+            db.collection(FirebaseUtil.COLLECTION_ROOMS + "/" + room.getDocId()
+                    + "/" + FirebaseUtil.COLLECTION_POSTS).add(newPost).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+
+                    Toast.makeText(getContext(), "New Post Added ", Toast.LENGTH_SHORT).show();
+
+                    getActivity().finish();
+
+                }
+            });
 
         }
 

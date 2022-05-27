@@ -7,9 +7,13 @@
         android:title="@string/menu_add_pets"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/settings"
-        android:icon="@drawable/ic_baseline_settings_32"
-        android:title="@string/menu_settings"
-        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/logout"
+        android:title="@string/title_menu_logout"
+        android:icon="@drawable/ic_baseline_close_32"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/add_user"
+        android:title="@string/title_menu_add_user"
+        app:showAsAction="never"/>
 
 </menu>

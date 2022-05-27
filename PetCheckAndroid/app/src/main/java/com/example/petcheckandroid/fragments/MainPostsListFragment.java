@@ -3,7 +3,6 @@ package com.example.petcheckandroid.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.controls.actions.FloatAction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,9 +18,7 @@ import androidx.fragment.app.ListFragment;
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.NewPostActivity;
 import com.example.petcheckandroid.activities.PetsListActivity;
-import com.example.petcheckandroid.adapters.PetAdapter;
 import com.example.petcheckandroid.adapters.PostAdapter;
-import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Post;
 import com.example.petcheckandroid.data.Room;
 import com.example.petcheckandroid.data.User;
@@ -83,16 +80,21 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        inflater.inflate(R.menu.menu_posts, menu);
+        User currentUser = mainPostsListFragListener.getCurrentUser();
+
+        if(currentUser.isAdmin()){
+            inflater.inflate(R.menu.menu_posts_admin, menu);
+        }
+        else{
+            inflater.inflate(R.menu.menu_posts_normal, menu);
+        }
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         
-        if (item.getTitle().equals("settings")){
-            Log.i(TAG, "onOptionsItemSelected: settings pressed");
-        }
-        else if (item.getTitle().equals("add pets")){
+        if (item.getTitle().equals("add pets")){
             Log.i(TAG, "onOptionsItemSelected: add pets pressed");
 
             Intent petsListIntent = new Intent(getContext(), PetsListActivity.class);
@@ -103,6 +105,15 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
             petsListIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, mainPostsListFragListener.getRoom());
 
             startActivity(petsListIntent);
+        }
+        else if(item.getTitle().equals("Logout")){
+            Log.i(TAG, "onOptionsItemSelected: logout pressed");
+
+            AlertsUtil.isLoggingOut(getContext(), getActivity());
+
+        }
+        else if(item.getTitle().equals("Add User")){
+            Log.i(TAG, "onOptionsItemSelected: add user pressed");
         }
         
         return super.onOptionsItemSelected(item);

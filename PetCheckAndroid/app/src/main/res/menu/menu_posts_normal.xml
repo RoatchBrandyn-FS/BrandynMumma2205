@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/add_pets"
+        android:icon="@drawable/ic_baseline_pets_32"
+        android:title="@string/menu_add_pets"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/logout"
+        android:title="@string/title_menu_logout"
+        android:icon="@drawable/ic_baseline_close_32"
+        app:showAsAction="always"/>
+
+
+</menu>

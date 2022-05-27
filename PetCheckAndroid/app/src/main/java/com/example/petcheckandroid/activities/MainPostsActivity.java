@@ -103,11 +103,6 @@ public class MainPostsActivity extends AppCompatActivity implements MainPostsLis
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-    }
-
     private void getPetList(){
 
         //get database and get doc string for room
