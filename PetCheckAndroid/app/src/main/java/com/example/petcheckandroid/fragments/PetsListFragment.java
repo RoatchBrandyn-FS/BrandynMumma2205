@@ -11,19 +11,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.AddPetActivity;
 import com.example.petcheckandroid.activities.PetDetailsActivity;
 import com.example.petcheckandroid.adapters.PetAdapter;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class PetsListFragment extends ListFragment {
+public class PetsListFragment extends ListFragment implements View.OnClickListener {
 
     private final String TAG = "PetsListFragment.TAG";
     private PetsListFragmentListener petsListFragmentListener;
@@ -39,6 +45,8 @@ public class PetsListFragment extends ListFragment {
 
     public interface PetsListFragmentListener {
         ArrayList<Pet> getPetsList();
+        String getRoomDocID();
+        void updatePetList();
     }
 
     @Override
@@ -60,12 +68,10 @@ public class PetsListFragment extends ListFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayList<Pet> pets = petsListFragmentListener.getPetsList();
+        setPetList();
 
-        // *** COME BACK LATER TO ADD IMAGES OF PETS ***
-        PetAdapter petAdapter = new PetAdapter(getContext(), pets);
-
-        setListAdapter(petAdapter);
+        FloatingActionButton fab = getActivity().findViewById(R.id.pets_list_fab);
+        fab.setOnClickListener(this);
     }
 
     @Override
@@ -81,4 +87,44 @@ public class PetsListFragment extends ListFragment {
 
         startActivity(petDetailsIntent);
     }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.pets_list_fab){
+            Log.i(TAG, "onClick: PetList Fab pressed");
+
+            Intent addPetIntent = new Intent(getContext(), AddPetActivity.class);
+            addPetIntent.setAction(Intent.ACTION_RUN);
+            addPetIntent.putExtra(IntentExtrasUtil.EXTRA_ROOM_DOC_ID, petsListFragmentListener.getRoomDocID());
+
+            addPetActivityLauncher.launch(addPetIntent);
+        }    
+    }
+
+    private void setPetList(){
+
+        ArrayList<Pet> pets = petsListFragmentListener.getPetsList();
+        Log.i(TAG, "setPetList: First pet = " + pets.get(0).getName());
+        PetAdapter petAdapter = new PetAdapter(getContext(), pets);
+
+        setListAdapter(petAdapter);
+    }
+
+    ActivityResultLauncher<Intent> addPetActivityLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Log.i(TAG, "onActivityResult: Result Code = " + result.getResultCode());
+
+                    //petsListFragmentListener.updatePetList();
+
+                    if(result.getResultCode() == 21){
+                        //setPetList();
+                        getActivity().finish();
+                    }
+
+                }
+            }
+    );
 }

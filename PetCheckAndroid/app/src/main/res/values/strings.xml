@@ -1,4 +1,27 @@
 <resources>
+
+    <string-array name="pet_types">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Fish</item>
+    </string-array>
+
+    <string-array name="cat_activities">
+        <item>Fed</item>
+        <item>Changed Litter</item>
+    </string-array>
+
+    <string-array name="dog_activities">
+        <item>Fed</item>
+        <item>Bathroom</item>
+        <item>Walked</item>
+    </string-array>
+
+    <string-array name="fish_activities">
+        <item>Fed</item>
+        <item>Cleaned Bowl</item>
+    </string-array>
+
     <string name="app_name">PetCheckAndroid</string>
     <string name="app_title">Pet Check</string>
     <string name="hint_room_code">Room Code</string>
@@ -32,4 +55,13 @@
     <string name="sample_text_large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="special_instructions">Special Instructions:</string>
     <string name="activities_titles">Activities:</string>
+    <string name="add_new_pet">Add New Pet</string>
+    <string name="pet_name_title">Pet Name</string>
+    <string name="hint_pet_name">Pet Name</string>
+    <string name="title_pet_description">Pet Description</string>
+    <string name="hint_pet_description">Pet Description</string>
+    <string name="title_special_instructions">Special Instructions</string>
+    <string name="hint_special_instructions">Special Instructions</string>
+    <string name="title_pet_type">Pet Type:</string>
+
 </resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corners_bottom"
+        android:gravity="center">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_pet"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_name_title"
+            android:layout_marginStart="7dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/add_pet_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_pet_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_pet_description"
+            android:layout_marginStart="7dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/add_pet_et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_pet_description"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_special_instructions"
+            android:layout_marginStart="7dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/add_pet_et_special_instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_special_instructions"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_pet_type"
+            android:layout_marginStart="7dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/add_pet_et_spinner"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"/>
+
+        <Button
+            android:id="@+id/add_pet_btn_create"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/btn_create"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

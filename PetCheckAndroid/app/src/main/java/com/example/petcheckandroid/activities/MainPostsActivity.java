@@ -59,6 +59,17 @@ public class MainPostsActivity extends AppCompatActivity implements MainPostsLis
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        //get new pet list update
+        getPetList();
+
+        //get new post update
+
+    }
+
+    @Override
     public void onBackPressed() {
 
     }
