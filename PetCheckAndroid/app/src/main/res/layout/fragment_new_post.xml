@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corners_bottom"
+        android:gravity="center">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_new_post"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_my_pets"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/new_post_pet_spinner"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_completed"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/new_post_activities_spinner"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"/>
+
+        <Button
+            android:id="@+id/new_post_btn_post"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/title_btn_post"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,9 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
+import com.example.petcheckandroid.activities.NewPostActivity;
 import com.example.petcheckandroid.activities.PetsListActivity;
 import com.example.petcheckandroid.data.Pet;
 import com.example.petcheckandroid.data.Room;
+import com.example.petcheckandroid.data.User;
 import com.example.petcheckandroid.utilities.AlertsUtil;
 import com.example.petcheckandroid.utilities.IntentExtrasUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,6 +44,7 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
 
     public interface MainPostsListFragListener {
         Room getRoom();
+        User getCurrentUser();
     }
 
     @Override
@@ -103,8 +106,21 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
     public void onClick(View view) {
         if (view.getId() == R.id.main_post_fab){
             Log.i(TAG, "onClick: fab pressed");
+            Room room = mainPostsListFragListener.getRoom();
+            User currentUser = mainPostsListFragListener.getCurrentUser();
 
-            AlertsUtil.noPetsError(getContext()); //*** MAKE SURE AND UPDATE THIS WHEN ABLE TO ADD PETS ***
+            if(room.getPets().size() == 0){
+                AlertsUtil.noPetsError(getContext());
+            }
+            else{
+                Intent newPostIntent = new Intent(getContext(), NewPostActivity.class);
+                newPostIntent.setAction(Intent.ACTION_RUN);
+                newPostIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, room);
+                newPostIntent.putExtra(IntentExtrasUtil.EXTRA_CURRENT_USER, currentUser);
+
+                startActivity(newPostIntent);
+            }
+             //*** MAKE SURE AND UPDATE THIS WHEN ABLE TO ADD PETS ***
         }
     }
 }

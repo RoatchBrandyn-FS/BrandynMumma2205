@@ -63,5 +63,9 @@
     <string name="title_special_instructions">Special Instructions</string>
     <string name="hint_special_instructions">Special Instructions</string>
     <string name="title_pet_type">Pet Type:</string>
+    <string name="title_new_post">New Post</string>
+    <string name="title_my_pets">My Pets</string>
+    <string name="title_activity_completed">Activity Completed:</string>
+    <string name="title_btn_post">Post</string>
 
 </resources>

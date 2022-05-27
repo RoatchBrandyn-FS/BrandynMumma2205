@@ -113,4 +113,9 @@ public class MainPostsActivity extends AppCompatActivity implements MainPostsLis
     public Room getRoom() {
         return room;
     }
+
+    @Override
+    public User getCurrentUser() {
+        return user;
+    }
 }
