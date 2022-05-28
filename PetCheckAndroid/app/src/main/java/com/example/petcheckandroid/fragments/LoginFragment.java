@@ -29,7 +29,6 @@ import java.util.Objects;
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private final String TAG = "LoginFragment.TAG";
-    private static final String ARG_ROOM_CODES = "ARG_ROOM_CODES";
     private LoginFragmentListener loginFragmentListener;
 
     public static LoginFragment newInstance() {

@@ -17,6 +17,7 @@ import androidx.fragment.app.ListFragment;
 
 import com.example.petcheckandroid.R;
 import com.example.petcheckandroid.activities.NewPostActivity;
+import com.example.petcheckandroid.activities.NewUserActivity;
 import com.example.petcheckandroid.activities.PetsListActivity;
 import com.example.petcheckandroid.adapters.PostAdapter;
 import com.example.petcheckandroid.data.Post;
@@ -114,6 +115,13 @@ public class MainPostsListFragment extends ListFragment implements View.OnClickL
         }
         else if(item.getTitle().equals("Add User")){
             Log.i(TAG, "onOptionsItemSelected: add user pressed");
+
+            Intent newUserIntent = new Intent(getContext(), NewUserActivity.class);
+            newUserIntent.setAction(Intent.ACTION_RUN);
+            newUserIntent.putExtra(IntentExtrasUtil.EXTRA_CONFIRMED_ROOM, mainPostsListFragListener.getRoom());
+
+            startActivity(newUserIntent);
+
         }
         
         return super.onOptionsItemSelected(item);

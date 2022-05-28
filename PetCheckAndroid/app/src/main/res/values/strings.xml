@@ -69,5 +69,8 @@
     <string name="title_btn_post">Post</string>
     <string name="title_menu_logout">Logout</string>
     <string name="title_menu_add_user">Add User</string>
+    <string name="title_admin">Admin:</string>
+    <string name="text_on">true</string>
+    <string name="text_off">false</string>
 
 </resources>

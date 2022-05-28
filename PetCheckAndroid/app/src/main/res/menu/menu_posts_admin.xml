@@ -9,7 +9,7 @@
 
     <item android:id="@+id/logout"
         android:title="@string/title_menu_logout"
-        android:icon="@drawable/ic_baseline_close_32"
+        android:icon="@drawable/ic_baseline_close_24"
         app:showAsAction="always"/>
 
     <item android:id="@+id/add_user"
